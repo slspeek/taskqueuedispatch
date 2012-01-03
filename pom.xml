@@ -79,4 +79,10 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	<repositories>
+	<repository>
+			<id>fspotcloud-maven</id>
+			<url>http://maven.fspotcloud.googlecode.com/hg/repo</url>
+		</repository>
+	</repositories>
 </project>
