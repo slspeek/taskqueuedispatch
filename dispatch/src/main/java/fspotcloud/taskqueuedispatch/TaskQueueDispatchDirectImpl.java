@@ -35,11 +35,6 @@ public class TaskQueueDispatchDirectImpl implements TaskQueueDispatch {
 	}
 
 	@Override
-	public Queue getQueue() {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
 	public <A extends Action<R>, R extends Result> void execute(A action) {
 		NullCallback<R> nullCallback = new NullCallback<R>();
 		execute(action, nullCallback);

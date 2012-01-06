@@ -1,0 +1,29 @@
+defaultTasks 'clean', 'integrationTest', 'install', 'gaeStop'
+
+allprojects  {
+	apply plugin: 'java'
+	apply plugin: 'maven'
+	apply plugin: 'eclipse'
+
+	group = 'fspotcloud.taskqueue-dispatch'
+	version = '0.1-beta-01-gradle'
+
+	configurations.compile.transitive = true
+}
+
+subprojects {
+	sourceCompatibility = 1.5
+	targetCompatibility = 1.5
+
+	repositories {
+		maven {
+			url "file://" + System.getProperty('user.home') + "/.m2/repository/"
+		}
+
+		maven { url "http://maven.fspotcloud.googlecode.com/hg/repo" }
+
+		maven { url "http://repo1.maven.org/maven2" }
+	}
+}
+
+dependsOnChildren()

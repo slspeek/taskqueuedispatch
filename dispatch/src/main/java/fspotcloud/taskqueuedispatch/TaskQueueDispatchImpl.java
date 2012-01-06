@@ -30,7 +30,6 @@ public class TaskQueueDispatchImpl implements TaskQueueDispatch {
 		queue.add(taskOptions);
 	}
 
-	@Override
 	public Queue getQueue() {
 		return queue;
 	}
