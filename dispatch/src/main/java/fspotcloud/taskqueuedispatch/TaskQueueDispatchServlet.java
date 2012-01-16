@@ -17,7 +17,6 @@ import net.customware.gwt.dispatch.shared.Result;
 
 import org.apache.commons.lang.SerializationUtils;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.Singleton;
