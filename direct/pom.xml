@@ -7,18 +7,14 @@
 		<version>0.3-tqd</version>
 	</parent>
 	<groupId>fspotcloud.taskqueue-dispatch</groupId>
-	<artifactId>dispatch</artifactId>
+	<artifactId>direct</artifactId>
 	<packaging>jar</packaging>
-	<name>Dispatcher TaskQueue Impl</name>
+	<name>Dispatcher Direct Impl</name>
 	<dependencies>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-servlet</artifactId>
 		</dependency>
-	<dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-user</artifactId>
-            </dependency>
 		<dependency>
 			<groupId>net.customware.gwt.dispatch</groupId>
 			<artifactId>gwt-dispatch</artifactId>
@@ -28,11 +24,6 @@
 			<artifactId>geronimo-servlet_2.5_spec</artifactId>
 			<version>1.2</version>
 			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-api-1.0-sdk</artifactId>
-			<version>${gae.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>
@@ -90,18 +81,6 @@
 	  <groupId>${project.groupId}</groupId>
 	  <artifactId>dispatch-api</artifactId>
 	  <version>${project.version}</version>
-	 </dependency>
-	 <dependency>
-	  <groupId>${project.groupId}</groupId>
-	  <artifactId>dispatch-api</artifactId>
-	  <version>${project.version}</version>
-	 </dependency>
-	 <dependency>
-	  <groupId>${project.groupId}</groupId>
-	  <artifactId>dispatch-api</artifactId>
-	  <version>${project.version}</version>
-	  <scope>test</scope>
-	  <type>test-jar</type>
 	 </dependency>
 	</dependencies>
 </project>
