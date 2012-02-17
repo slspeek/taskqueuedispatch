@@ -80,6 +80,13 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+          <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-webdav</artifactId>
+                <version>1.0-beta-2</version>
+            </extension>
+        </extensions>
     </build>
     <dependencyManagement>
         <dependencies>
@@ -102,7 +109,6 @@
                 <groupId>com.google.gwt</groupId>
                 <artifactId>gwt-servlet</artifactId>
                 <version>${gwt.version}</version>
-                <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>com.google.gwt</groupId>
@@ -155,7 +161,13 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
+    <distributionManagement>
+        <repository>
+            <id>fspotcloud-maven</id>
+            <name>fspotcloud-maven</name>
+            <url>dav:https://fspotcloud-maven.googlecode.com/svn/maven/repository</url>
+        </repository>
+    </distributionManagement>
     <repositories>
         <repository>
             <id>fspotcloud-maven</id>
