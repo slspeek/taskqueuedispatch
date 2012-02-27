@@ -18,7 +18,7 @@ public class WebDriverITestCase extends TestCase {
 	}
 
 	public WebDriverITestCase() {
-		this(new WebDriverProviderFactory().firefoxProvider(),
+		this(new WebDriverProviderFactory().htmlUnitProvider(),
 				"http://localhost:8080");
 	}
 
