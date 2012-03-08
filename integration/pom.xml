@@ -4,17 +4,17 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>taskqueue-dispatch</artifactId>
-        <groupId>fspotcloud.taskqueue-dispatch</groupId>
-        <version>0.3-tqd</version>
+        <groupId>com.googlecode.taskqueue-dispatch</groupId>
+        <version>0.4-tqd</version>
     </parent>
-    <groupId>fspotcloud.taskqueue-dispatch</groupId>
+    <groupId>com.googlecode.taskqueue-dispatch</groupId>
     <artifactId>integration</artifactId>
-    <version>0.3-tqd</version>
+    <version>0.4-tqd</version>
     <packaging>war</packaging>
     <name>Selenium test for TaskQueueDispatch</name>
     <dependencies>
         <dependency>
-            <groupId>fspotcloud.taskqueue-dispatch</groupId>
+            <groupId>com.googlecode.taskqueue-dispatch</groupId>
             <artifactId>dispatch</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -65,7 +65,7 @@
         </dependency>
     </dependencies>
     <build>
-        <testSourceDirectory>${basedir}/src/integration-test</testSourceDirectory>
+        <testSourceDirectory>${basedir}/src/integration-test/java</testSourceDirectory>
         <resources>
             <resource>
                 <directory>${basedir}/src/main/resources</directory>

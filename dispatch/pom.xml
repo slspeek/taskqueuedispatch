@@ -2,11 +2,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>fspotcloud.taskqueue-dispatch</groupId>
+		<groupId>com.googlecode.taskqueue-dispatch</groupId>
 		<artifactId>taskqueue-dispatch</artifactId>
-		<version>0.3-tqd</version>
+		<version>0.4-tqd</version>
 	</parent>
-	<groupId>fspotcloud.taskqueue-dispatch</groupId>
+	<groupId>com.googlecode.taskqueue-dispatch</groupId>
 	<artifactId>dispatch</artifactId>
 	<packaging>jar</packaging>
 	<name>Dispatcher TaskQueue Impl</name>
