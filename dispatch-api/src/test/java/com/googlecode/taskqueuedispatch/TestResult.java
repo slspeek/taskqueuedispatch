@@ -4,9 +4,7 @@ import java.io.Serializable;
 
 import net.customware.gwt.dispatch.shared.Result;
 
-import com.google.gwt.user.client.rpc.IsSerializable;
-
-public class TestResult implements Result, IsSerializable, Serializable{
+public class TestResult implements Result, Serializable{
 	
 	/**
 	 * 

@@ -4,12 +4,9 @@ allprojects  {
 	apply plugin: 'java'
 	apply plugin: 'maven'
 	apply plugin: 'eclipse'
-  apply plugin: 'code-quality'
 
 	group = 'fspotcloud.taskqueue-dispatch'
-	version = '0.1-beta-01-gradle'
-
-	configurations.compile.transitive = true
+	version = '0.5-tqd'
 }
 
 

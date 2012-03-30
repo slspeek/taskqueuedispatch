@@ -1,4 +1,6 @@
 syntax: glob
+*/.idea/*
+.idea/*
 .gradle/
 build/
 grapher/src/site/resources/*.png

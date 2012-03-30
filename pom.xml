@@ -24,6 +24,7 @@
         <module>integration</module>
     </modules>
     <build>
+    <defaultGoal>install</defaultGoal>
         <pluginManagement>
             <plugins>
                 <plugin>

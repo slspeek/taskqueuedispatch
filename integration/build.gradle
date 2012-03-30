@@ -1,64 +1,56 @@
+buildscript {
+    repositories {
+        add(new org.apache.ivy.plugins.resolver.URLResolver()) {
+            name = 'GitHub'
+            addArtifactPattern 'http://cloud.github.com/downloads/[organisation]/[module]/[module]-[revision].[ext]'
+        }
+    }
+
+    dependencies { classpath 'bmuschko:gradle-gae-plugin:0.5.2' }
+}
 apply plugin: 'war'
 apply plugin: 'gae'
 
-buildscript {
-	repositories {
-		add(new org.apache.ivy.plugins.resolver.URLResolver()) {
-			name = 'GitHub'
-			addArtifactPattern 'http://cloud.github.com/downloads/[organisation]/[module]/[module]-[revision].[ext]'
-		}
-	}
-
-	dependencies { classpath 'bmuschko:gradle-gae-plugin:0.5.2' }
+configurations {
+    integrationTestCompile.extendsFrom compile
 }
 
 gae {
-	stopKey = 'STOP'
-	disableUpdateCheck = true
-	daemon = true
+    stopKey = 'STOP'
+    disableUpdateCheck = true
+    daemon = true
 }
 
 sourceSets {
-	integrationTest {
-		compileClasspath = sourceSets.main.output + configurations.testRuntime
-		runtimeClasspath = output + sourceSets.main.output + configurations.testRuntime
-		java { srcDir 'src/integration-test/java' }
-	}
+    integrationTest {
+        java { srcDir 'src/integration-test/java' }
+        //compileClasspath = sourceSets.main.output + configurations.integrationTest
+        //runtimeClasspath = output + sourceSets.main.output + configurations.integrationTest
+    }
 }
 
 dependencies {
-	compile project(':dispatch')
-	compile "org.seleniumhq.selenium:selenium:2.0b3"
-	compile "org.seleniumhq.selenium.client-drivers:selenium-java-client-driver:1.0.2"
-	testCompile "com.google.appengine:appengine-api-stubs:1.6.0"
-	testCompile "com.google.appengine:appengine-local-runtime:1.6.0"
-	testCompile "com.google.appengine:appengine-testing:1.6.0"
-	testCompile "org.mockito:mockito-all:1.9.0-rc1"
-	testCompile "junit:junit:4.9"
+    compile project(':dispatch')
+    integrationTestCompile "org.seleniumhq.selenium:selenium:2.0b3",
+            "org.seleniumhq.selenium.client-drivers:selenium-java-client-driver:1.0.2",
+            "org.mockito:mockito-all:1.9.0-rc1"
 }
 
 task integrationTest(type: Test, dependsOn: gaeRun) {
-	testClassesDir = sourceSets.integrationTest.output.classesDir
-	classpath = sourceSets.integrationTest.runtimeClasspath
-	//tuning the included/excluded tests
-	include 'fspotcloud/taskqueuedispatch/integration/test/*ITest.class'
-	
-	doLast  {
-		println "before"
-		hello.execute()
-		println "after"
-	}
-}
+    testClassesDir = sourceSets.integrationTest.output.classesDir
+    classpath = sourceSets.integrationTest.runtimeClasspath
+    //tuning the included/excluded tests
+    include 'com/googlecode/taskqueuedispatch/integration/test/*ITest.class'
 
-task hello(dependsOn: gaeStop) << {
-	println "hello"
+    doLast {
+        gaeStop.execute()
+    }
 }
 
 tasks.gaeStop << {
-	println "in dolast of gaeStop"
+    println "in dolast of gaeStop"
 }
 
-
-
+check.dependsOn integrationTest
 
 
