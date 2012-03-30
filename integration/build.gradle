@@ -11,6 +11,8 @@ buildscript {
 apply plugin: 'war'
 apply plugin: 'gae'
 
+System.properties['appengine.sdk.root'] = System.properties['user.home'] + "/appengine-java-sdk-1.6.0"
+
 configurations {
     integrationTestCompile.extendsFrom compile
 }
