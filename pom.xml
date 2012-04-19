@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.googlecode.taskqueue-dispatch</groupId>
     <artifactId>taskqueue-dispatch</artifactId>
-    <version>0.4-tqd</version>
+    <version>0.6-tqd</version>
     <packaging>pom</packaging>
     <name>GWT-dispatch to TaskQueue Parent</name>
     <description></description>

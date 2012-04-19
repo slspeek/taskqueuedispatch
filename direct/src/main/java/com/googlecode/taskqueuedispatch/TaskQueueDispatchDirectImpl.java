@@ -11,32 +11,41 @@ import com.google.inject.Injector;
 
 public class TaskQueueDispatchDirectImpl implements TaskQueueDispatch {
 
-	final private Dispatch dispatch;
-	final private Injector injector;
+    final private Dispatch dispatch;
+    final private Injector injector;
 
-	@Inject
-	public TaskQueueDispatchDirectImpl(Dispatch dispatch, Injector injector) {
-		super();
-		this.dispatch = dispatch;
-		this.injector = injector;
-	}
+    @Inject
+    public TaskQueueDispatchDirectImpl(Dispatch dispatch, Injector injector) {
+        super();
+        this.dispatch = dispatch;
+        this.injector = injector;
+    }
 
-	@Override
-	public <A extends Action<R>, R extends Result> void execute(A action,
-			SerializableAsyncCallback<R> callback) {
-		injector.injectMembers(callback);
-		try {
-			R result = dispatch.execute(action);
-			callback.onSuccess(result);
-		} catch (DispatchException e) {
-			callback.onFailure(e);
-		}
-	}
+    @Override
+    public <A extends Action<R>, R extends Result> void execute(A action,
+            SerializableAsyncCallback<R> callback) {
+        injector.injectMembers(callback);
+        try {
+            R result = dispatch.execute(action);
+            callback.onSuccess(result);
+        } catch (DispatchException e) {
+            callback.onFailure(e);
+        }
+    }
 
-	@Override
-	public <A extends Action<R>, R extends Result> void execute(A action) {
-		NullCallback<R> nullCallback = new NullCallback<R>();
-		execute(action, nullCallback);
-	}
+    @Override
+    public <A extends Action<R>, R extends Result> void execute(A action) {
+        NullCallback<R> nullCallback = new NullCallback<R>();
+        execute(action, nullCallback);
+    }
 
+    @Override
+    public <A extends Action<R>, R extends Result> void execute(long delaySeconds, A action, SerializableAsyncCallback<R> callback) {
+        execute(action, callback);
+    }
+
+    @Override
+    public <A extends Action<R>, R extends Result> void execute(long delaySeconds, A action) {
+        execute(action);
+    }
 }

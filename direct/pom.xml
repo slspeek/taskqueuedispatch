@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.googlecode.taskqueue-dispatch</groupId>
 		<artifactId>taskqueue-dispatch</artifactId>
-		<version>0.4-tqd</version>
+		<version>0.6-tqd</version>
 	</parent>
 	<groupId>com.googlecode.taskqueue-dispatch</groupId>
 	<artifactId>direct</artifactId>

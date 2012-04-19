@@ -5,11 +5,11 @@
     <parent>
         <artifactId>taskqueue-dispatch</artifactId>
         <groupId>com.googlecode.taskqueue-dispatch</groupId>
-        <version>0.4-tqd</version>
+        <version>0.6-tqd</version>
     </parent>
     <groupId>com.googlecode.taskqueue-dispatch</groupId>
     <artifactId>integration</artifactId>
-    <version>0.4-tqd</version>
+    <version>0.6-tqd</version>
     <packaging>war</packaging>
     <name>Selenium test for TaskQueueDispatch</name>
     <dependencies>
