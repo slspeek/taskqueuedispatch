@@ -1,4 +1,4 @@
-defaultTasks 'clean', 'integrationTest', 'install', 'gaeStop'
+apply from: 'libraries.gradle'
 
 allprojects  {
 	apply plugin: 'java'
@@ -7,23 +7,21 @@ allprojects  {
 	apply plugin: 'idea'
 
 	group = 'fspotcloud.taskqueue-dispatch'
-	version = '0.6-tqd'
+	version = '0.7-tqd-gradle'
+
+    repositories {
+        mavenCentral()
+        maven {
+            url "http://fspotcloud-maven.googlecode.com/svn/maven/repository"
+        }
+        mavenLocal()
+    }
 }
 
 
 subprojects {
-	sourceCompatibility = 1.5
-	targetCompatibility = 1.5
-
-	repositories {
-		maven {
-			url "file://" + System.getProperty('user.home') + "/.m2/repository/"
-		}
-
-		maven { url "http://maven.fspotcloud.googlecode.com/hg/repo" }
-
-		maven { url "http://repo1.maven.org/maven2" }
-	}
+	sourceCompatibility = 1.6
+	targetCompatibility = 1.6
 }
 
-dependsOnChildren()
+//dependsOnChildren()

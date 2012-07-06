@@ -6,15 +6,16 @@ buildscript {
         }
     }
 
-    dependencies { classpath 'bmuschko:gradle-gae-plugin:0.5.2' }
+    dependencies { classpath 'bmuschko:gradle-gae-plugin:0.7.3' }
 }
 apply plugin: 'war'
 apply plugin: 'gae'
 
-System.properties['appengine.sdk.root'] = System.properties['user.home'] + "/appengine-java-sdk-1.6.0"
+System.properties['appengine.sdk.root'] = System.properties['user.home'] + "/appengine-java-sdk-${gae_version}"
 
 configurations {
     integrationTestCompile.extendsFrom compile
+    provided
 }
 
 gae {
@@ -24,6 +25,7 @@ gae {
 }
 
 sourceSets {
+    main { compileClasspath += configurations.provided }
     integrationTest {
         java { srcDir 'src/integration-test/java' }
         //compileClasspath = sourceSets.main.output + configurations.integrationTest
@@ -33,9 +35,12 @@ sourceSets {
 
 dependencies {
     compile project(':dispatch')
+    provided libs.servlet_spec
     integrationTestCompile "org.seleniumhq.selenium:selenium:2.0b3",
             "org.seleniumhq.selenium.client-drivers:selenium-java-client-driver:1.0.2",
             "org.mockito:mockito-all:1.9.0-rc1"
+    integrationTestCompile 'junit:junit:3.8.1'
+
 }
 
 task integrationTest(type: Test, dependsOn: gaeRun) {
@@ -55,4 +60,4 @@ tasks.gaeStop << {
 
 check.dependsOn integrationTest
 
-
+clean.dependsOn gaeStop

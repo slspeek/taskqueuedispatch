@@ -10,4 +10,5 @@
 	<system-properties>
 		<property name="log4j.configuration" value="log4j.properties" />
 	</system-properties>
+    <threadsafe>true</threadsafe>
 </appengine-web-app>

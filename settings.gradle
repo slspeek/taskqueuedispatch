@@ -1,1 +1,1 @@
-include 'dispatch', 'integration', 'dispatch-api'
+include 'dispatch-api', 'integration', 'dispatch', 'direct'
