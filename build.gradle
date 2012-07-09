@@ -6,7 +6,7 @@ allprojects  {
 	apply plugin: 'eclipse'
 	apply plugin: 'idea'
 
-	group = 'fspotcloud.taskqueue-dispatch'
+	group = 'com.googlecode.taskqueue-dispatch'
 	version = '0.7-tqd-gradle'
 
     configurations {
