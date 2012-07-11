@@ -7,7 +7,7 @@ allprojects  {
 	apply plugin: 'idea'
 
 	group = 'com.googlecode.taskqueue-dispatch'
-	version = '0.7-tqd-gradle'
+	version = '0.8-tqd'
 
     configurations {
         deployerJars
@@ -15,8 +15,8 @@ allprojects  {
 
     dependencies {
         deployerJars "org.apache.maven.wagon:wagon-webdav:1.0-beta-2"
-        //"org.apache.maven.wagon:wagon-webdav-jackrabbit:1.0-beta-6",
     }
+
     uploadArchives {
         repositories.mavenDeployer {
             configuration = configurations.deployerJars

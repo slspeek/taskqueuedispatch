@@ -3,7 +3,7 @@ description = 'Dispatch API'
 
 dependencies {
     compile libs.gwt_dispatch
-    compile "com.google.appengine:appengine-api-1.0-sdk:${gae_version}"
+    //
     compile libs.commons_lang
     compile libs.inject
     compile libs.guice
