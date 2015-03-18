@@ -1,0 +1,1 @@
+A GWT-Dispatch extension to run ActionHandlers in the AppEngine Task Queue. A direct invocation implementation for testing is available.
