@@ -1,15 +1,15 @@
 buildscript {
     repositories {
-        add(new org.apache.ivy.plugins.resolver.URLResolver()) {
-            name = 'GitHub'
-            addArtifactPattern 'http://cloud.github.com/downloads/[organisation]/[module]/[module]-[revision].[ext]'
-        }
+			jcenter()
     }
 
-    dependencies { classpath 'bmuschko:gradle-gae-plugin:0.7.3' }
+
+    dependencies { 
+				classpath 'com.google.appengine:gradle-appengine-plugin:1.9.18'
+}
 }
 apply plugin: 'war'
-apply plugin: 'gae'
+apply plugin: 'appengine'
 
 System.properties['appengine.sdk.root'] = System.properties['user.home'] + "/appengine-java-sdk-${gae_version}"
 
@@ -18,8 +18,8 @@ configurations {
     provided
 }
 
-gae {
-    stopKey = 'STOP'
+appengine {
+    //stopKey = 'STOP'
     disableUpdateCheck = true
     daemon = true
 }
@@ -36,14 +36,12 @@ sourceSets {
 dependencies {
     compile project(':dispatch')
     provided libs.servlet_spec
-    integrationTestCompile "org.seleniumhq.selenium:selenium:2.0b3",
-            "org.seleniumhq.selenium.client-drivers:selenium-java-client-driver:1.0.2",
-            "org.mockito:mockito-all:1.9.0-rc1"
+    integrationTestCompile libs.selenium
     integrationTestCompile 'junit:junit:3.8.1'
 
 }
 
-task integrationTest(type: Test, dependsOn: gaeRun) {
+task integrationTest(type: Test, dependsOn: appengineRun) {
     testClassesDir = sourceSets.integrationTest.output.classesDir
     classpath = sourceSets.integrationTest.runtimeClasspath
     //tuning the included/excluded tests
@@ -54,10 +52,10 @@ task integrationTest(type: Test, dependsOn: gaeRun) {
     }
 }
 
-tasks.gaeStop << {
-    println "in dolast of gaeStop"
+tasks.appengineStop << {
+    println "in dolast of appengineStop"
 }
 
 check.dependsOn integrationTest
 
-clean.dependsOn gaeStop
+clean.dependsOn appengineStop

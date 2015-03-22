@@ -7,7 +7,7 @@ allprojects  {
 	apply plugin: 'idea'
 
 	group = 'com.googlecode.taskqueue-dispatch'
-	version = '0.9-tqd'
+	version = '0.10-tqd'
 
     configurations {
         deployerJars
@@ -36,7 +36,7 @@ allprojects  {
 
 
 subprojects {
-	sourceCompatibility = 1.6
-	targetCompatibility = 1.6
+	sourceCompatibility = 1.7
+	targetCompatibility = 1.7
 }
 

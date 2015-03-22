@@ -1,4 +1,4 @@
-libs = [
+ext.libs = [
         inject: "javax.inject:javax.inject:1",
         junit: "junit:junit:4.10",
         guice: "com.google.inject:guice:${guice_version}",
@@ -18,6 +18,7 @@ libs = [
         mockito: "org.mockito:mockito-core:1.9.0-rc1",
         guava_testlib: "com.google.guava:guava-testlib:10.0.1",
         jukito: "org.jukito:jukito:1.1",
+				selenium: ["org.seleniumhq.selenium:selenium-java:${selenium_java_version}", "org.seleniumhq.selenium:selenium-firefox-driver:${selenium_firefox_version}"],
         test_ng: "org.testng:testng:6.1.1",
         tomcat: ["org.apache.tomcat:catalina:${tomcatVersion}",
                 "org.apache.tomcat:coyote:${tomcatVersion}",
