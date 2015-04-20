@@ -1,61 +1,46 @@
 buildscript {
-    repositories {
-			jcenter()
-    }
+	repositories {
+		jcenter()
+	}
 
+	dependencies { 
+		classpath 'com.google.appengine:gradle-appengine-plugin:1.9.18'
+	}
+}
 
-    dependencies { 
-				classpath 'com.google.appengine:gradle-appengine-plugin:1.9.18'
-}
-}
 apply plugin: 'war'
 apply plugin: 'appengine'
 
 System.properties['appengine.sdk.root'] = System.properties['user.home'] + "/appengine-java-sdk-${gae_version}"
 
 configurations {
-    integrationTestCompile.extendsFrom compile
+    testCompile.extendsFrom compile
     provided
 }
 
 appengine {
-    //stopKey = 'STOP'
     disableUpdateCheck = true
     daemon = true
 }
 
 sourceSets {
-    main { compileClasspath += configurations.provided }
-    integrationTest {
-        java { srcDir 'src/integration-test/java' }
-        //compileClasspath = sourceSets.main.output + configurations.integrationTest
-        //runtimeClasspath = output + sourceSets.main.output + configurations.integrationTest
-    }
+		main { compileClasspath += configurations.provided }
 }
 
 dependencies {
     compile project(':dispatch')
     provided libs.servlet_spec
-    integrationTestCompile libs.selenium
-    integrationTestCompile 'junit:junit:3.8.1'
-
+    functionalTestCompile libs.selenium
+    functionalTestCompile 'junit:junit:3.8.1'
 }
 
-task integrationTest(type: Test, dependsOn: appengineRun) {
-    testClassesDir = sourceSets.integrationTest.output.classesDir
-    classpath = sourceSets.integrationTest.runtimeClasspath
-    //tuning the included/excluded tests
-    include 'com/googlecode/taskqueuedispatch/integration/test/*ITest.class'
-
-    doLast {
-        gaeStop.execute()
-    }
+appengineFunctionalTest {
+		include 'com/googlecode/taskqueuedispatch/integration/test/*ITest.class'
 }
 
 tasks.appengineStop << {
     println "in dolast of appengineStop"
 }
 
-check.dependsOn integrationTest
-
 clean.dependsOn appengineStop
+
