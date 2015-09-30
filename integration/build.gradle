@@ -4,7 +4,7 @@ buildscript {
 	}
 
 	dependencies { 
-		classpath 'com.google.appengine:gradle-appengine-plugin:1.9.18'
+		classpath 'com.google.appengine:gradle-appengine-plugin:1.9.24'
 	}
 }
 
@@ -36,10 +36,6 @@ dependencies {
 
 appengineFunctionalTest {
 		include 'com/googlecode/taskqueuedispatch/integration/test/*ITest.class'
-}
-
-tasks.appengineStop << {
-    println "in dolast of appengineStop"
 }
 
 clean.dependsOn appengineStop
